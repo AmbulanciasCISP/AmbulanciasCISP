@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CISP Ambulancias | Emergencias 24/7 en Yucatán</title>
+  <meta name="description" content="CISP Ambulancias: servicio de ambulancias privadas 24/7 en Yucatán. Emergencias, traslados programados, paramédicos certificados y unidades equipadas.">
+  <meta name="theme-color" content="#1474C6">
+  <meta property="og:title" content="CISP Ambulancias">
+  <meta property="og:description" content="Respuesta rápida 24/7. WhatsApp +52 999 102 1431">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:image" content="assets/logo.jpg">
+  <link rel="icon" href="assets/favicon.png">
+  <style>
+    /* ---- Reset y variables ---- */
+    *,*::before,*::after{box-sizing:border-box}
+    html:focus-within{scroll-behavior:smooth}
+    body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial;color:#102a43;background:#ffffff}
+    img{max-width:100%;display:block}
+    :root{
+      --pri:#1474C6; --pri-600:#0F63A7; --pri-700:#0B4E84;
+      --accent:#D94A45; --bg:#f7fafc; --ink:#102a43; --muted:#8C9097;
+      --ok:#22c55e; --warn:#f59e0b; --err:#ef4444; --card:#ffffff;
+      --ring: 0 0 0 3px #1474C640;
+      --shadow: 0 10px 25px rgba(16,42,67,.12);
+      --radius: 14px;
+    }
+    a{color:var(--pri);text-decoration:none}
+    .container{width:min(1100px,94%);margin-inline:auto}
+    .btn{display:inline-block;padding:.85rem 1.1rem;border-radius:12px;font-weight:700}
+    .btn.pri{background:var(--pri);color:#fff}
+    .btn.pri:hover{background:var(--pri-600)}
+    .btn.ghost{border:2px solid var(--pri);color:var(--pri)}
+    .pill{display:inline-flex;gap:.5rem;align-items:center;padding:.35rem .6rem;border-radius:999px;background:#e6f2ff;color:var(--pri-700);font-weight:600;font-size:.85rem}
+    /* ---- Header ---- */
+    header{position:sticky;top:0;background:#ffffffcc;backdrop-filter:saturate(160%) blur(8px);z-index:50;border-bottom:1px solid #eef2f7}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:.7rem 0}
+    .brand{display:flex;gap:.6rem;align-items:center}
+    .brand img{height:34px;width:auto}
+    nav ul{display:flex;gap:1rem;list-style:none;padding:0;margin:0}
+    nav a{font-weight:600;color:var(--ink)}
+    .nav-cta{display:flex;gap:.5rem;align-items:center}
+    .call{display:none}
+    @media (min-width:880px){ .call{display:inline-flex} }
+    /* ---- Hero ---- */
+    .hero{background:
+      radial-gradient(1000px 400px at 10% -5%, #e6f2ff 0%, transparent 60%),
+      linear-gradient(180deg,#ffffff, #f5fbff 70%);
+      padding:3.5rem 0 2rem; overflow:hidden}
+    .hero .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.2rem}
+    .card{background:var(--card);border:1px solid #eef2f7;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .card.pad{padding:1rem}
+    .tag{font-size:.8rem;color:var(--muted)}
+    h1{font-size:clamp(1.9rem,3.8vw,3rem);line-height:1.15;margin:.2rem 0 .6rem}
+    /* ---- Sections ---- */
+    section{padding:3rem 0}
+    h2{font-size:clamp(1.4rem,2.6vw,2rem);margin:0 0 1rem}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+    @media (max-width:880px){
+      .hero .grid,.grid-3,.grid-2{grid-template-columns:1fr}
+    }
+    .service{display:flex;gap:.9rem;align-items:flex-start;padding:1rem}
+    .service svg{flex:0 0 28px}
+    .list{display:grid;gap:.5rem;margin:.6rem 0 0;padding:0;list-style:none}
+    .list li{display:flex;align-items:center;gap:.55rem}
+    .badge{background:#eef2f7;border-radius:999px;padding:.25rem .6rem;font-size:.8rem;font-weight:700;color:#334e68}
+    /* ---- Table plans ---- */
+    table{width:100%;border-collapse:separate;border-spacing:0 10px}
+    th{text-align:left;color:#334e68;font-size:.9rem}
+    td,th{padding:.8rem 1rem;background:#fff;border:1px solid #eef2f7}
+    tr td:first-child, tr th:first-child{border-top-left-radius:10px;border-bottom-left-radius:10px}
+    tr td:last-child, tr th:last-child{border-top-right-radius:10px;border-bottom-right-radius:10px}
+    /* ---- CTA strip ---- */
+    .cta-strip{background:linear-gradient(90deg, var(--pri) , #0F63A7);color:#fff;padding:1rem;border-radius:var(--radius);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem}
+    /* ---- Footer ---- */
+    footer{background:#0b1f2a;color:#d9e2ec;padding:2.2rem 0;margin-top:2rem}
+    footer a{color:#9adbc8}
+    .legal{font-size:.85rem;color:#b6c3cf}
+    /* ---- Floating actions ---- */
+    .fab{position:fixed;right:12px;bottom:12px;display:flex;flex-direction:column;gap:.6rem;z-index:60}
+    .fab a{display:flex;align-items:center;gap:.6rem;background:#fff;border:1px solid #e5e7eb;padding:.7rem 1rem;border-radius:999px;box-shadow:var(--shadow);font-weight:700;color:#111}
+    .fab a:focus{outline: none; box-shadow: var(--ring)}
+    /* ---- Form ---- */
+    input,select,textarea{width:100%;padding:.85rem;border:1px solid #d8e2ec;border-radius:12px;font:inherit}
+    input:focus,select:focus,textarea:focus{outline:none;box-shadow:var(--ring);border-color:#1474C680}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .form-grid > div{display:flex;flex-direction:column;gap:.45rem}
+    @media (max-width:720px){ .form-grid{grid-template-columns:1fr} }
+    .success{display:none;margin-top:.6rem;color:var(--ok);font-weight:700}
+  </style>
+  <script>
+    const PHONE = "+529991021431";
+    const DIRECT_CALL = "+529991021431";
+    function enviarSolicitud(e){
+      e.preventDefault();
+      const f = e.target;
+      const data = {
+        nombre: f.nombre.value.trim(),
+        telefono: f.telefono.value.trim(),
+        tipo: f.tipo.value,
+        origen: f.origen.value.trim(),
+        destino: f.destino.value.trim(),
+        fecha: f.fecha.value,
+        notas: f.notas.value.trim()
+      };
+      const texto = `Hola, soy ${data.nombre}.%0A`+
+        `Quiero solicitar: ${data.tipo}.%0A`+
+        (data.origen?`Origen: ${data.origen}.%0A`:"")+
+        (data.destino?`Destino: ${data.destino}.%0A`:"")+
+        (data.fecha?`Fecha/hora: ${data.fecha}.%0A`:"")+
+        (data.telefono?`Teléfono: ${data.telefono}.%0A`:"")+
+        (data.notas?`Notas: ${data.notas}`:"");
+      const url = `https://wa.me/${PHONE.replace(/\D/g,'')}?text=${texto}`;
+      window.open(url,'_blank','noopener');
+      document.querySelector('#ok').style.display='block';
+      f.reset();
+    }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"MedicalTransport",
+    "name":"CISP Ambulancias",
+    "areaServed":"Yucatán, México",
+    "telephone":"+52 999 102 1431",
+    "url":"https://tu-dominio.mx",
+    "sameAs":["https://www.facebook.com/CISP.Ambulancias","https://www.instagram.com/CISP.Ambulancias"],
+    "availableService":[
+      {"@type":"MedicalTherapy","name":"Atención de emergencias 24/7"},
+      {"@type":"MedicalTherapy","name":"Traslados interhospitalarios"},
+      {"@type":"MedicalTherapy","name":"Eventos y cobertura preventiva"}
+    ],
+    "openingHours":"Mo-Su 00:00-23:59",
+    "logo":"assets/logo.jpg"
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container nav" role="navigation" aria-label="Principal">
+      <div class="brand">
+        <img src="assets/logo.jpg" alt="CISP Ambulancias logo">
+        <strong style="white-space:nowrap">CISP Ambulancias</strong>
+        <span class="badge">24/7</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#cobertura">Cobertura</a></li>
+          <li><a href="#flota">Flota</a></li>
+          <li><a href="#equipo">Equipo</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn ghost call" href="tel:+529991021431" aria-label="Llamar a emergencias">Llamar 24/7</a>
+        <a class="btn pri" href="#traslado">Solicitar traslado</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container grid">
+        <div>
+          <span class="pill" aria-label="Tiempo de respuesta">🚑 Respuesta promedio &lt; 15 min*</span>
+          <h1>Ambulancias privadas en Yucatán, atención inmediata y humana <span style="white-space:nowrap;">24/7</span></h1>
+          <p class="tag">Emergencias, traslados programados, soporte vital básico y avanzado. Paramédicos certificados y unidades equipadas.</p>
+          <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.8rem">
+            <a class="btn pri" href="tel:+529991021431">📞 Llamar ahora</a>
+            <a class="btn ghost" href="https://wa.me/529991021431" target="_blank" rel="noopener">💬 WhatsApp</a>
+          </div>
+
+          <div class="kpis">
+            <div class="card pad">
+              <strong style="font-size:1.3rem">+5,000</strong><div class="tag">traslados realizados</div>
+            </div>
+            <div class="card pad">
+              <strong style="font-size:1.3rem">12</strong><div class="tag">hospitales aliados</div>
+            </div>
+            <div class="card pad">
+              <strong style="font-size:1.3rem">99.2%</strong><div class="tag">satisfacción</div>
+            </div>
+          </div>
+          <small class="tag">*Sujeto a tráfico y distancia.</small>
+        </div>
+        <div class="card" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1587740896339-6a5cc560b36a?q=80&w=1200&auto=format&fit=crop" alt="Ambulancia moderna de CISP Ambulancias lista para salir a servicio">
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios">
+      <div class="container">
+        <h2>Servicios</h2>
+        <div class="grid-3">
+          <article class="card service">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M19 6h-4l-2-2H5a2 2 0 0 0-2 2v9h2a3 3 0 0 0 6 0h4a3 3 0 0 0 6 0h1V9a3 3 0 0 0-3-3zM7 18a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm10 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM9 10H7V8h2V6h2v2h2v2h-2v2H9v-2z"/></svg>
+            <div>
+              <h3 style="margin:.2rem 0">Emergencias 24/7</h3>
+              <p class="tag">Respuesta inmediata y triage telefónico.</p>
+              <ul class="list">
+                <li>Soporte Vital Básico y Avanzado</li>
+                <li>Trauma, cardiometabólicas, pediatría</li>
+                <li>Coordinación con hospitales</li>
+              </ul>
+            </div>
+          </article>
+          <article class="card service">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h6l2 2h6a2 2 0 0 1 2 2v9H3V7z"/><path fill="#fff" d="M13 9h-2v2H9v2h2v2h2v-2h2v-2h-2z"/></svg>
+            <div>
+              <h3 style="margin:.2rem 0">Traslados programados</h3>
+              <p class="tag">Interhospitalarios y domicilio-hospital.</p>
+              <ul class="list">
+                <li>Camilla, silla de ruedas, bariátricos</li>
+                <li>Oxígeno, monitoreo y medicación</li>
+                <li>Cobertura regional</li>
+              </ul>
+            </div>
+          </article>
+          <article class="card service">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7v4H3a2 2 0 0 0-2 2v5h6v-5H6v-4a6 6 0 1 1 12 0v4h-1v5h6v-5a2 2 0 0 0-2-2h-2V9a7 7 0 0 0-7-7z"/></svg>
+            <div>
+              <h3 style="margin:.2rem 0">Eventos y cobertura</h3>
+              <p class="tag">Brigadas y preventivos para eventos.</p>
+              <ul class="list">
+                <li>Planes por hora/día</li>
+                <li>Reportes y bitácoras</li>
+                <li>Primeros auxilios in situ</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- COBERTURA -->
+    <section id="cobertura" style="background:var(--bg)">
+      <div class="container">
+        <h2>Cobertura</h2>
+        <p class="tag">Mérida y área metropolitana, Valladolid, Tizimín, Progreso y traslados a Cancún, Campeche y CDMX.</p>
+        <div class="grid-2">
+          <div class="card pad">
+            <strong>Base central:</strong> Mérida, YUC<br>
+            <strong>Tiempo promedio:</strong> &lt; 15–25 min en zona metropolitana<br>
+            <strong>Hospitales aliados:</strong> Público y privado
+          </div>
+          <div class="card" aria-hidden="true">
+            <iframe title="Mapa de cobertura" style="border:0;width:100%;height:260px;border-radius:var(--radius)" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241519.00491805633!2d-89.829!3d20.97!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f567144aa9b5db7%3A0x4016978679c6d40!2sM%C3%A9rida%2C%20Yuc.!5e0!3m2!1ses-419!2smx!4v1680000000000"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLOTA -->
+    <section id="flota">
+      <div class="container">
+        <h2>Flota y equipamiento</h2>
+        <div class="grid-3">
+          <div class="card pad"><strong>Tipo I y II</strong><div class="tag">Unidades ACLS/BLS con monitor, DEA y oxígeno</div></div>
+          <div class="card pad"><strong>Higiene y control</strong><div class="tag">Desinfección entre servicios, protocolos NOM</div></div>
+          <div class="card pad"><strong>Especiales</strong><div class="tag">Camilla bariátrica y incubadora (opcional)</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EQUIPO -->
+    <section id="equipo" style="background:var(--bg)">
+      <div class="container">
+        <h2>Nuestro equipo</h2>
+        <div class="grid-3">
+          <div class="card pad"><strong>Paramédicos certificados</strong><div class="tag">AHA, PHTLS, ITLS, PALS</div></div>
+          <div class="card pad"><strong>Médicos reguladores</strong><div class="tag">Telemedicina y coordinación hospitalaria</div></div>
+          <div class="card pad"><strong>Capacitación continua</strong><div class="tag">Simulación clínica y auditorías</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLANES -->
+    <section id="planes">
+      <div class="container">
+        <h2>Planes y convenios</h2>
+        <div class="card pad" role="region" aria-label="Tabla de planes">
+          <table>
+            <thead><tr><th>Plan</th><th>Incluye</th><th>Ideal para</th><th>Desde</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>Emergencia</td>
+                <td>Respuesta 24/7, ACLS/BLS, triage</td>
+                <td>Personas y familias</td>
+                <td>$MXN —</td>
+              </tr>
+              <tr>
+                <td>Traslado básico</td>
+                <td>Camilla, oxígeno, monitoreo básico</td>
+                <td>Consultas y procedimientos</td>
+                <td>$MXN —</td>
+              </tr>
+              <tr>
+                <td>Eventos</td>
+                <td>Unidad en sitio, primeros auxilios, reporte</td>
+                <td>Conciertos, deportes, empresas</td>
+                <td>$MXN /hora</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="tag">Solicita una cotización exacta por WhatsApp o teléfono.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section id="testimonios" style="background:var(--bg)">
+      <div class="container">
+        <h2>Testimonios</h2>
+        <div class="grid-3">
+          <blockquote class="card pad">“Llegaron rapidísimo y nos acompañaron hasta el ingreso hospitalario.”<br><span class="tag">— Laura M.</span></blockquote>
+          <blockquote class="card pad">“Equipo profesional y humano, excelente comunicación.”<br><span class="tag">— Dr. Pérez</span></blockquote>
+          <blockquote class="card pad">“Contratamos cobertura para un evento y todo fluyó perfecto.”<br><span class="tag">— Producciones Sur</span></blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA STRIP -->
+    <section>
+      <div class="container">
+        <div class="cta-strip">
+          <strong>¿Necesitas una ambulancia ahora mismo?</strong>
+          <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+            <a class="btn pri" href="tel:+529991021431">📞 Llamar 24/7</a>
+            <a class="btn ghost" href="https://wa.me/529991021431" target="_blank" rel="noopener">💬 Chatear</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULARIO -->
+    <section id="traslado">
+      <div class="container">
+        <h2>Solicitar traslado</h2>
+        <form class="card pad" onsubmit="enviarSolicitud(event)" aria-describedby="ok">
+          <div class="form-grid">
+            <div>
+              <label for="nombre">Nombre *</label>
+              <input id="nombre" name="nombre" required autocomplete="name" placeholder="Tu nombre">
+            </div>
+            <div>
+              <label for="telefono">Teléfono de contacto *</label>
+              <input id="telefono" name="telefono" required inputmode="tel" placeholder="+52 ...">
+            </div>
+            <div>
+              <label for="tipo">Tipo de servicio *</label>
+              <select id="tipo" name="tipo" required>
+                <option value="Traslado básico">Traslado básico</option>
+                <option value="Traslado con monitoreo">Traslado con monitoreo</option>
+                <option value="Emergencia 24/7">Emergencia 24/7</option>
+                <option value="Cobertura de evento">Cobertura de evento</option>
+              </select>
+            </div>
+            <div>
+              <label for="fecha">Fecha y hora deseada</label>
+              <input id="fecha" name="fecha" type="datetime-local">
+            </div>
+            <div>
+              <label for="origen">Origen</label>
+              <input id="origen" name="origen" placeholder="Dirección o punto de referencia">
+            </div>
+            <div>
+              <label for="destino">Destino</label>
+              <input id="destino" name="destino" placeholder="Hospital o domicilio">
+            </div>
+          </div>
+          <div style="margin-top:1rem">
+            <label for="notas">Notas</label>
+            <textarea id="notas" name="notas" rows="4" placeholder="Alergias, requerimientos especiales, bariátrico, etc."></textarea>
+          </div>
+          <div style="display:flex;gap:.6rem;margin-top:1rem;align-items:center;flex-wrap:wrap">
+            <button class="btn pri" type="submit">Enviar por WhatsApp</button>
+            <a class="btn ghost" href="mailto:contacto@tu-empresa.mx?subject=Solicitud%20de%20traslado">Enviar por correo</a>
+            <span id="ok" class="success">✅ Abriendo WhatsApp…</span>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" style="background:var(--bg)">
+      <div class="container">
+        <h2>Contacto</h2>
+        <div class="grid-3">
+          <div class="card pad">
+            <strong>Teléfono 24/7</strong><br>
+            <a href="tel:+529991021431">+52 999 102 1431</a>
+          </div>
+          <div class="card pad">
+            <strong>WhatsApp</strong><br>
+            <a href="https://wa.me/529991021431" target="_blank" rel="noopener">+52 999 102 1431</a>
+          </div>
+          <div class="card pad">
+            <strong>Correo</strong><br>
+            <a href="mailto:contacto@tu-empresa.mx">contacto@tu-empresa.mx</a>
+          </div>
+        </div>
+        <p class="tag" style="margin-top:.8rem">En emergencia vital llama al <strong>911</strong> de inmediato.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="grid-3" style="gap:1.4rem">
+        <div>
+          <strong>CISP Ambulancias</strong>
+          <p class="legal">Servicio de ambulancias privadas en Yucatán. Atención humana y profesional 24/7.</p>
+        </div>
+        <div>
+          <strong>Enlaces</strong><br>
+          <a href="#servicios">Servicios</a> · <a href="#cobertura">Cobertura</a> · <a href="#planes">Planes</a>
+        </div>
+        <div>
+          <strong>Legal</strong>
+          <p class="legal">© <span id="y"></span> CISP Ambulancias. Términos · Privacidad.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="fab" aria-label="Acciones rápidas">
+    <a href="tel:+529991021431">📞 Emergencias 24/7</a>
+    <a href="https://wa.me/529991021431" target="_blank" rel="noopener">💬 WhatsApp</a>
+  </div>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
